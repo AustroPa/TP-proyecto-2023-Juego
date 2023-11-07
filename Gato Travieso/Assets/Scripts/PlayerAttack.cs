@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
-public class PlayerAttack : MonoBehaviour {
+public class PlayerAttack : MonoBehaviour
+{
 	[SerializeField] private float attackCooldown;
 	private Animator anim;
 	private PlayerMovement playerMovement;
@@ -14,19 +15,25 @@ public class PlayerAttack : MonoBehaviour {
 
 
 	// Use this for initialization
-	void Start () {
-		
+	void Start()
+	{
+
 	}
-	
+
 	// Update is called once per frame
-	void Update () {
-		if (Input.GetMouseButton(0)	&&	cooldownTime > attackCooldown	&&	playerMovement.canAttack())
+	void Update()
+	{
+		if (Input.GetMouseButton(0) && cooldownTimer > attackCooldown && playerMovement.canAttack())
 			Attack();
 
 		cooldownTimer += Time.deltaTime;
 
-	public void Attack() {
-			anim.SetTrigger("attack");
-			cooldownTimer = 0;
+
 	}
+	public void Attack()
+	{
+		anim.SetTrigger("attack");
+		cooldownTimer = 0;
+	}
+
 }
