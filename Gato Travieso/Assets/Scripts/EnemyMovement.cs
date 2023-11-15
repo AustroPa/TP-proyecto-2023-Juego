@@ -12,6 +12,11 @@ public class EnemyMovement : MonoBehaviour {
 	private Animator anim;
 	private Transform currentPoint;
 
+	private float dazedTime;
+	public float startDazedTime;
+
+	public int health;
+
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody2D>();
@@ -23,7 +28,18 @@ public class EnemyMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Vector2 point = currentPoint.position - transform.position;
+
+        if (dazedTime <= 0)
+        {
+            speed = 2;
+        }
+        else
+        {
+            speed = 0;
+            dazedTime -= Time.deltaTime;
+        }
+
+        Vector2 point = currentPoint.position - transform.position;
 		
 		if(currentPoint== pointB.transform){
 			rb.velocity = new Vector2(speed,0);
@@ -38,6 +54,8 @@ public class EnemyMovement : MonoBehaviour {
 			flip();
 			currentPoint=pointB.transform;
 		}
+
+		
 	}
 
 	private void flip(){
@@ -51,5 +69,11 @@ public class EnemyMovement : MonoBehaviour {
 		Gizmos.DrawWireSphere(pointA.transform.position,0.5f);
 		Gizmos.DrawWireSphere(pointB.transform.position,0.5f);
 		Gizmos.DrawLine(pointA.transform.position,pointB.transform.position);
+	}
+
+	public void TakeDamage(int damage) {
+
+			health -= damage;
+		Debug.Log("Damage taken!");
 	}
 }
