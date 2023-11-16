@@ -51,11 +51,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\CameraController.cs" />
-     <Compile Include="Assets\Scripts\Door.cs" />
-     <Compile Include="Assets\Scripts\EnemyMovement.cs" />
-     <Compile Include="Assets\Scripts\PlayerAttack.cs" />
-     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
+     <Compile Include="Assets\Scripts\Core\CameraController.cs" />
+     <Compile Include="Assets\Scripts\Enemies\EnemyMovement.cs" />
+     <Compile Include="Assets\Scripts\Enemies\MeleeEnemy.cs" />
+     <Compile Include="Assets\Scripts\Health\Health.cs" />
+     <Compile Include="Assets\Scripts\Health\HealthBar.cs" />
+     <Compile Include="Assets\Scripts\Health\HealthCollectible.cs" />
+     <Compile Include="Assets\Scripts\Player\LadderMovement.cs" />
+     <Compile Include="Assets\Scripts\Player\PlayerAttack.cs" />
+     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
+     <Compile Include="Assets\Scripts\Room\Door.cs" />
      <None Include="Assets\Sprites\Character\Read Me.txt" />
  <Reference Include="UnityEngine.CoreModule">
  <HintPath>D:/Users/under/Documents/2017.4.40f1/Editor/Data/Managed/UnityEngine/UnityEngine.CoreModule.dll</HintPath>

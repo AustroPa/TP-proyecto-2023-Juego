@@ -31,10 +31,12 @@ public class PlayerAttack : MonoBehaviour
 	{
 		if (Input.GetMouseButton(0) && cooldownTimer > attackCooldown && playerMovement.canAttack()) {
             Attack();
+
 			Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemies);
 			for (int i = 0; i < enemiesToDamage.Length; i++) {
 				enemiesToDamage[i].GetComponent<EnemyMovement>().TakeDamage(damage);
 			}
+
 		}
 
         cooldownTimer += Time.deltaTime;
