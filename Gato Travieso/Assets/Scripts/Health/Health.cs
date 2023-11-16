@@ -8,10 +8,12 @@ public class Health : MonoBehaviour {
 	public float currentHealth { get; private set; }
     private Animator anim;
     private bool dead;
+    private UIManager uiManager;
 
 	private void Awake() {
 		currentHealth = startingHealth;
         anim = GetComponent<Animator>();
+        uiManager = FindObjectOfType<UIManager>();
 	}
 
 	
@@ -30,8 +32,9 @@ public class Health : MonoBehaviour {
 		else {
             if (!dead) { 
             anim.SetTrigger("died");
-            GetComponent<PlayerMovement>().enabled = false;
+                GetComponent<PlayerMovement>().enabled = false;
                 dead = true;
+                uiManager.GameOver();
             }
         }
 	}
@@ -56,6 +59,10 @@ public class Health : MonoBehaviour {
 
         }
 
+    }
+
+    private IEnumerator delay(int espera) {
+        yield return new WaitForSeconds(espera);
     }
 
 }
